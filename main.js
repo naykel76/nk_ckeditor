@@ -1,4 +1,4 @@
-import './src/app.scss'
+import './src/app.scss';
 
-// for demonstration purposes only. do not use in production.
+// Import preset builds for demonstration purposes only (not for production use)
 import './src/preset-builds/preset-build';

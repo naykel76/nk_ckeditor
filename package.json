@@ -5,7 +5,7 @@
     "scripts": {
         "dev": "vite --open",
         "build": "vite build",
-        "cke": "vite build --mode ckeditor",
+        "bundle": "vite build --mode bundle",
         "preview": "vite preview"
     },
     "devDependencies": {

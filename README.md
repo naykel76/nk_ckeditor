@@ -2,13 +2,37 @@
 
 # NAYKEL CKEditor 5
 
+## Compilation
+
+### Custom CKEditor 5 Build
+
+To bundle the project with the custom build of CKEditor 5 and output the files to the `dist` directory, use the following command:
+
+```bash
+npx vite build --mode=bundle
+# or
+npm run bundle
+```
+
+This will compile the custom CKEditor 5 build and place the output in the dist directory.
+
+### Vite Project Build
+
+To compile the entire Vite project for production, run the following command:
+
+```bash
+npm run build
+```
+
+## Debugging
+
 Inspect the `vite.config.js` file for more information on the build configuration.
 
 ```bash
 npx vite build --debug
 ```
 
-<div style="color: red; font-size: 2.5rem; font-weight: bold;">WARNING</div>  
+## Deprecation Warnings in JTB
 
 This project uses JTB, which relies on deprecated Sass features, including:  
 
