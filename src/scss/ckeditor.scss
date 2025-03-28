@@ -1,0 +1,30 @@
+@use 'nk_jtb/src/variables' as *;
+
+// make sure there is a gap between the content and the editor
+:where(*) > .ck-editor:not(:first-child) {
+    margin-block-start: $content-gap;
+}
+
+.ck-focused,
+.ck-blurred {
+    border: 1px solid var(--ck-color-base-border) !important;
+}
+
+.ck-powered-by-balloon {
+    display: none !important;
+}
+
+// set the height otherwise the ckeditor is too small and looks weird. This may
+// be a problem with inline and balloon editors.
+.ck-editor__editable {
+    min-height: 6rem;
+}
+
+// override JTB class to make the dropdown panel visible
+.bx:has(.ck-dropdown__panel) {
+    overflow: visible;
+}
+// remove padding set by JTB
+.todo-list__label input {
+    padding: 0;
+}

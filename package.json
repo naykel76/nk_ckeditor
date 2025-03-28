@@ -4,8 +4,8 @@
     "type": "module",
     "scripts": {
         "dev": "vite --open",
-        "build": "vite build",
-        "bundle": "vite build --mode bundle",
+        "bundle": "vite build",
+        "build": "vite build --mode bundle",
         "preview": "vite preview"
     },
     "devDependencies": {

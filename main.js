@@ -1,4 +1,15 @@
-import './src/app.scss';
+import './src/scss/app.scss';
 
-// Import preset builds for demonstration purposes only (not for production use)
-import './src/preset-builds/preset-build';
+import './src/ckeditor-build';
+
+import { setupClassicEditor } from './src/common';
+import { basicEditorConfig } from './src/document-editors';
+
+// Callback function for testing.
+const cb = (type) => console.log(`Basic ${type} is ready.`);
+
+document.addEventListener("DOMContentLoaded", function () {
+    setupClassicEditor('basicEditor', basicEditorConfig, () => cb('basicEditor'));
+});
+
+
