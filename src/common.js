@@ -15,6 +15,10 @@ const LICENSE_KEY = 'GPL';
  */
 export const commonConfig = {
     licenseKey: LICENSE_KEY,
+    link: {
+        addTargetToExternalLinks: true,
+        defaultProtocol: 'https://',
+    },
 };
 
 /**
