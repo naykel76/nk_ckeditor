@@ -1,4 +1,28 @@
+// this is not perfect because it only overrides the ckeditor styles and not the
+// jtb styles. This is a bit of a hack and may not be the best way to do this.
+@forward 'nk_jtb/src/variables/base' with (
+    $heading-and-title-color: green
+);
+
 @use 'nk_jtb/src/variables' as *;
+
+// .ck.ck-button {
+//     &.ck-heading_heading1,
+//     &.ck-heading_heading2,
+//     &.ck-heading_heading3,
+//     &.ck-heading_heading4,
+//     &.ck-heading_heading5,
+//     &.ck-heading_heading6 {
+//         color: $heading-and-title-color;
+//     }
+// }
+
+// overrides the drop down styles to match jtb styles.It appears to work as
+// expected but we need to check to make sure it doesn't break anything else.
+.ck.ck-button.ck-list-item-button,
+.ck.ck-button.ck-list-item-button.ck-on {
+    color: $heading-and-title-color;
+}
 
 // make sure there is a gap between the content and the editor
 :where(*) > .ck-editor:not(:first-child) {

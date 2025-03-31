@@ -12,11 +12,12 @@
 // not guaranteed the order of the items in the toolbar array so it is best to
 // define them explicitly for now.
 export const fontFormattingToolbar = ['bold', 'italic', 'underline', '|'];
-export const fontFormattingToolbarExt = ['bold', 'italic', 'underline', 'removeFormat', '|'];
+export const fontFormattingToolbarExt = ['heading', '|','bold', 'italic', 'underline', 'removeFormat', '|'];
 export const linkToolbar = ['link', '|'];
 export const listToolbar = ['bulletedList', 'numberedList', '|'];
 export const listToolbarExt = ['bulletedList', 'numberedList', 'todoList', '|'];
-
+export const sourceToolbar = ['sourceEditing', '|'];
+// export const devToolbarExt = ['sourceEditing', 'showBlocks', '|', 'codeBlock'];
 
 /**
  * ============================================================================
@@ -26,4 +27,4 @@ export const listToolbarExt = ['bulletedList', 'numberedList', 'todoList', '|'];
  * serves as a standalone configuration for general use.
  */
 export const basicEditorToolbar = [...fontFormattingToolbar, ...linkToolbar, ...listToolbar,];
-export const standardEditorToolbar = [...fontFormattingToolbarExt, ...linkToolbar, ...listToolbarExt,];
+export const standardEditorToolbar = [...fontFormattingToolbarExt, ...linkToolbar, ...listToolbarExt];

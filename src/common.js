@@ -40,3 +40,33 @@ export const setupClassicEditor = (elementSelector, config, implementationCallba
         })
         .catch(error => { console.error(error); });
 }
+
+
+/**
+ * Example page content for the editor.
+ */
+export const exampleContent = `
+<p class="lead">This is a lead paragraph, which serves as an introductory text to grab attention and provide context. It is often larger and more prominent than regular text.</p>
+
+<h2>Heading 2</h2>
+<p>This is a paragraph under an H2 heading.</p>
+
+<h3>Heading 3</h3>
+<p>This is a paragraph under an H3 heading.</p>
+
+<h4>Heading 4</h4>
+<p>This is a paragraph under an H4 heading.</p>
+
+<ul>
+    <li>Item One</li>
+    <li>Item Two</li>
+    <li>Item Three</li>
+</ul>
+<ol>
+    <li>First Item</li>
+    <li>Second Item</li>
+    <li>Third Item</li>
+</ol>
+
+<blockquote>This is a blockquote example.</blockquote>
+`;
