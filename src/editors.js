@@ -1,15 +1,15 @@
 // core editing
 import { AutoLink, Autosave, Bold, Essentials, Italic, Link, List, Paragraph, Underline, TodoList } from 'ckeditor5';
-// basic editing
+// basic formatting plugins
 import { Alignment, BlockQuote, Heading, Highlight, HorizontalLine, Indent, IndentBlock, Markdown, PasteFromMarkdownExperimental, PasteFromOffice, RemoveFormat } from 'ckeditor5';
 // table editing
 import { Table, TableCaption, TableCellProperties, TableColumnResize, TableProperties, TableToolbar } from 'ckeditor5';
 // source editing
 import { CodeBlock, GeneralHtmlSupport, HtmlComment, ShowBlocks, SourceEditing } from 'ckeditor5';
 // toolbars
-import { basicEditorToolbar, standardEditorToolbar, sourceToolbar } from './toolbars.js';
+import { basicEditorToolbar, standardEditorToolbar, toolbarSource } from './toolbars.js';
 
-import { commonConfig, exampleContent } from './common.js';
+import { commonConfig } from './common.js';
 
 
 /**
@@ -23,6 +23,7 @@ import { commonConfig, exampleContent } from './common.js';
 
 
 const corePlugins = [AutoLink, Autosave, Bold, Essentials, Italic, Link, List, Paragraph, Underline, TodoList];
+const listPlugins = [List];
 const developerPlugins = [CodeBlock, GeneralHtmlSupport, HtmlComment, ShowBlocks, SourceEditing];
 const formattingPlugins = [Alignment, BlockQuote, Heading, Highlight, HorizontalLine, Indent, IndentBlock, PasteFromOffice, RemoveFormat];
 const tablePlugins = [Table, TableCaption, TableCellProperties, TableColumnResize, TableProperties, TableToolbar];
@@ -49,7 +50,7 @@ export const basicEditorConfig = {
 
 export const standardEditorConfig = {
     ...commonConfig,
-    toolbar: [...standardEditorToolbar, ...sourceToolbar],
+    toolbar: [...standardEditorToolbar, ...toolbarSource],
     plugins: [...standardEditorPlugins, ...developerPlugins],
     // this could be moved and made to be reused in other builds but it is fine
     // for now as there are no other builds that need it.
@@ -73,7 +74,6 @@ export const standardEditorConfig = {
                 classes: true
             }
         ]
-    },
-    initialData: exampleContent,
+    }
 };
 

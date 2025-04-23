@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => {
                 output: {
                     entryFileNames: (chunkInfo) =>
                         chunkInfo.name === 'ckeditor-build'
-                            ? 'ckeditor.js' // Output filename for CKEditor build
+                            ? 'nk-ckeditor.js' // Output filename for CKEditor build
                             : '[name]-[hash].js', // Default naming for other builds
 
                     format: isBundle ? 'iife' : 'esm', // Use IIFE for CKEditor, ESM for the main project

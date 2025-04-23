@@ -1,4 +1,4 @@
-import { ClassicEditor } from 'ckeditor5';
+import { BalloonEditor, ClassicEditor, InlineEditor } from 'ckeditor5';
 import 'ckeditor5/ckeditor5.css';
 import './scss/ckeditor.scss';
 
@@ -22,51 +22,40 @@ export const commonConfig = {
 };
 
 /**
- * Helper function to set up a CKEditor Classic editor instance.
+ * Creates a CKEditor instance for a specific editor class.
  * 
- * @param {string} elementSelector - The ID of the HTML element to initialize the editor on.
+ * This function initialises the provided editor class (e.g., ClassicEditor, InlineEditor, etc.)
+ * on the specified DOM element and applies the given configuration.
+ * It also ensures that the provided callback is executed after the editor is initialised.
+ *
+ * @param {Function} EditorClass - The CKEditor class to initialise (e.g., ClassicEditor, InlineEditor).
+ * @param {string} elementSelector - The ID of the HTML element to initialise the editor on.
  * @param {Object} config - The configuration object for the editor.
- * @param {Function} [implementationCallback] - Optional callback for additional setup actions.
- * @returns {Promise<import('ckeditor5').ClassicEditor>} - A promise that resolves to the editor instance.
+ * @param {Function} implementationCallback - The callback to execute after the editor is created. 
+ *                                          This receives the editor instance as an argument.
+ * @throws {Error} If the implementationCallback is not provided or is not a function.
+ * @returns {Promise} Returns a promise that resolves with the editor instance.
  */
-export const setupClassicEditor = (elementSelector, config, implementationCallback) => {
-    ClassicEditor
+const createEditor = async (EditorClass, elementSelector, config, implementationCallback) => {
+    // Ensure a valid callback is provided
+    if (typeof implementationCallback !== 'function') {
+        throw new Error(`A valid implementation callback function must be provided for ${elementSelector}`);
+    }
+
+    // Initialise the editor and execute the callback once it's ready
+    return EditorClass
         .create(document.getElementById(elementSelector), config)
         .then(editor => {
-            if (typeof implementationCallback !== 'function') {
-                throw new Error(`A valid implementation callback function must be provided for the ${elementSelector} editor.`);
-            }
+            // Execute the callback with the editor instance
             implementationCallback(editor);
+            return editor;
         })
-        .catch(error => { console.error(error); });
-}
+        .catch(error => {
+            console.error(error);
+        });
+};
 
-
-/**
- * Example page content for the editor.
- */
-export const exampleContent = `
-<p class="lead">This is a lead paragraph, which serves as an introductory text to grab attention and provide context. It is often larger and more prominent than regular text.</p>
-
-<h2>Heading 2</h2>
-<p>This is a paragraph under an H2 heading.</p>
-
-<h3>Heading 3</h3>
-<p>This is a paragraph under an H3 heading.</p>
-
-<h4>Heading 4</h4>
-<p>This is a paragraph under an H4 heading.</p>
-
-<ul>
-    <li>Item One</li>
-    <li>Item Two</li>
-    <li>Item Three</li>
-</ul>
-<ol>
-    <li>First Item</li>
-    <li>Second Item</li>
-    <li>Third Item</li>
-</ol>
-
-<blockquote>This is a blockquote example.</blockquote>
-`;
+// Editor wrapper functions
+export const createBalloonEditor = (el, cfg, cb) => createEditor(BalloonEditor, el, cfg, cb);
+export const createClassicEditor = (el, cfg, cb) => createEditor(ClassicEditor, el, cfg, cb);
+export const createInlineEditor = (el, cfg, cb) => createEditor(InlineEditor, el, cfg, cb);
