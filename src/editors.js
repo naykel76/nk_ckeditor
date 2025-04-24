@@ -7,50 +7,60 @@ import { Table, TableCaption, TableCellProperties, TableColumnResize, TablePrope
 // source editing
 import { CodeBlock, GeneralHtmlSupport, HtmlComment, ShowBlocks, SourceEditing } from 'ckeditor5';
 // toolbars
-import { basicEditorToolbar, standardEditorToolbar, toolbarSource } from './toolbars.js';
+import { basicToolbar, basicToolbarExt, standardToolbar, toolbarSource } from './toolbars.js';
 
 import { commonConfig } from './common.js';
 
 
 /**
  * ============================================================================
- * Predefined Plugins
+ * Plugin Groups
  * ============================================================================
- * These are predefined plugins for specific editor builds. Ensure that the
- * required plugins are included in the build; otherwise, missing plugins will
- * prevent certain features from working.
+ * These groupings organize plugins by category for easier configuration
+ * management. All plugins listed here are statically imported above and
+ * included in the final bundle, so these groupings do not affect bundle size
+ * or performance.
  */
-
-
 const corePlugins = [AutoLink, Autosave, Bold, Essentials, Italic, Link, List, Paragraph, Underline, TodoList];
-const listPlugins = [List];
-const developerPlugins = [CodeBlock, GeneralHtmlSupport, HtmlComment, ShowBlocks, SourceEditing];
 const formattingPlugins = [Alignment, BlockQuote, Heading, Highlight, HorizontalLine, Indent, IndentBlock, PasteFromOffice, RemoveFormat];
+const developerPlugins = [CodeBlock, GeneralHtmlSupport, HtmlComment, ShowBlocks, SourceEditing];
 const tablePlugins = [Table, TableCaption, TableCellProperties, TableColumnResize, TableProperties, TableToolbar];
 
-// Add these as optional
 // to include markdown support add - Markdown, PasteFromMarkdownExperimental,
+
 
 /**
  * ============================================================================
  * Plugin Builds
  * ============================================================================
- * Predefined toolbars providing a set of tools for specific editor builds. Each
- * serves as a standalone configuration for general use.
+ * These are predefined plugin sets used in editor configurations. Each set
+ * represents a typical usage scenario. All referenced plugins must be included
+ * in the build (which they are, via static imports above).
+ *
+ * NOTE: Since all plugins are already bundled, you can include them ALL in any
+ * config to simplify toolbar setup and avoid missing dependencies. This does
+ * not affect performance or bundle size, as all plugins are statically imported
+ * above.
  */
-
 const basicEditorPlugins = corePlugins;
 const standardEditorPlugins = [...corePlugins, ...formattingPlugins, ...tablePlugins];
+const allPlugins = [...corePlugins, ...formattingPlugins, ...tablePlugins, ...developerPlugins];
 
 export const basicEditorConfig = {
     ...commonConfig,
     plugins: basicEditorPlugins,
-    toolbar: basicEditorToolbar
+    toolbar: basicToolbar
+};
+
+export const basicEditorConfigExt = {
+    ...commonConfig,
+    plugins: basicEditorPlugins,
+    toolbar: basicToolbarExt
 };
 
 export const standardEditorConfig = {
     ...commonConfig,
-    toolbar: [...standardEditorToolbar, ...toolbarSource],
+    toolbar: [...standardToolbar, ...toolbarSource],
     plugins: [...standardEditorPlugins, ...developerPlugins],
     // this could be moved and made to be reused in other builds but it is fine
     // for now as there are no other builds that need it.
