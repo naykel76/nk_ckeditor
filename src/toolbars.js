@@ -9,7 +9,7 @@
  */
 
 export const toolbarTextStylesBasic = ['bold', 'italic', 'underline', '|'];
-export const toolbarTextStylesExt = ['heading', '|', 'bold', 'italic', 'underline', 'removeFormat', '|'];
+export const toolbarTextStylesExt = ['heading', '|', 'bold', 'italic', 'underline', 'removeFormat', '|', 'horizontalLine', '|'];
 export const toolbarLinks = ['link', '|'];
 export const toolbarLists = ['bulletedList', 'numberedList', '|'];
 export const toolbarListsExt = ['bulletedList', 'numberedList', 'todoList', '|'];
